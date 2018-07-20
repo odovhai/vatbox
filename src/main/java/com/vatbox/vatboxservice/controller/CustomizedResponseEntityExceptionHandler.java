@@ -1,7 +1,7 @@
 package com.vatbox.vatboxservice.controller;
 
-import com.vatbox.vatboxservice.domain.exception.ErrorDetails;
-import com.vatbox.vatboxservice.domain.exception.NotFoundException;
+import com.vatbox.vatboxservice.common.exception.ErrorDetails;
+import com.vatbox.vatboxservice.common.exception.NotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

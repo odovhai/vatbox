@@ -1,7 +1,7 @@
 package com.vatbox.vatboxservice.service.impl;
 
 import com.vatbox.vatboxservice.domain.model.Customer;
-import com.vatbox.vatboxservice.domain.repository.CustomerRepository;
+import com.vatbox.vatboxservice.repository.CustomerRepository;
 import com.vatbox.vatboxservice.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,5 +17,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Customer save(Customer customer) {
+        return repository.save(customer);
     }
 }

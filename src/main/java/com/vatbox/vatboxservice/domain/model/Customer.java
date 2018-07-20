@@ -1,11 +1,11 @@
 package com.vatbox.vatboxservice.domain.model;
 
+import com.google.common.collect.Lists;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,5 +15,9 @@ public class Customer {
     private Long id;
 
     @Column
+    @NotEmpty
     private String name;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Invoice> invoices = Lists.newArrayList();
 }

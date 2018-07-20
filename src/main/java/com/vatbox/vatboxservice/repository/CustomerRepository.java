@@ -1,4 +1,4 @@
-package com.vatbox.vatboxservice.domain.repository;
+package com.vatbox.vatboxservice.repository;
 
 import com.vatbox.vatboxservice.domain.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;

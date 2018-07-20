@@ -1,4 +1,4 @@
-package com.vatbox.vatboxservice.domain.exception;
+package com.vatbox.vatboxservice.common.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
