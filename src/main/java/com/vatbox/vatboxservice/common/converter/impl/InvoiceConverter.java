@@ -13,6 +13,13 @@ public class InvoiceConverter extends DefaultDozerEntityDtoConverter<Invoice, In
     }
 
     @Override
+    public InvoiceDto toDto(Invoice source) {
+        InvoiceDto invoiceDto = super.toDto(source);
+        invoiceDto.setCustomerId(source.getCustomer().getId());
+        return invoiceDto;
+    }
+
+    @Override
     public Invoice toEntity(InvoiceDto dto) {
         Invoice invoice = super.toEntity(dto);
         Customer customer = new Customer();

@@ -3,8 +3,6 @@ package com.vatbox.vatboxservice.domain.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -16,15 +14,12 @@ public class Invoice {
     private Long id;
 
     @Column
-    @NotEmpty
     private String name;
 
     @Column
-    @NotNull
     private Double amount;
 
     @Column
-    @NotNull
     private Double vat;
 
     @Column

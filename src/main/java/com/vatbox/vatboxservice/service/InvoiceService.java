@@ -8,5 +8,13 @@ public interface InvoiceService {
 
     List<Invoice> findAll();
 
-    Invoice save(Invoice customer);
+    List<Invoice> findByCustomerId(Long customerId);
+
+    Invoice findById(Long id);
+
+    Invoice save(Invoice invoice);
+
+    Invoice update(Invoice invoice);
+
+    void delete(Long id);
 }

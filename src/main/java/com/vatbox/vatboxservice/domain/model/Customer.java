@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Data
@@ -15,7 +14,6 @@ public class Customer {
     private Long id;
 
     @Column
-    @NotEmpty
     private String name;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
