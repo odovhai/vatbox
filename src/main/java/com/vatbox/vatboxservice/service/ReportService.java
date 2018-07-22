@@ -4,5 +4,5 @@ import com.vatbox.vatboxservice.domain.dto.report.CustomerTotalReport;
 
 public interface ReportService {
 
-    CustomerTotalReport generateCustomerTotalReport(Long customerId);
+    CustomerTotalReport generateCustomerTotalReport(Long customerId, Long from, Long to);
 }

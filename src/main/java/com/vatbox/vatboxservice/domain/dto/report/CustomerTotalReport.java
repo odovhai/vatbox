@@ -8,6 +8,6 @@ import lombok.Data;
 public class CustomerTotalReport {
     private Long customerId;
     private String customerName;
-    private Double totalAmount;
-    private Double totalVat;
+    private double totalAmount;
+    private double totalVat;
 }

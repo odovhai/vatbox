@@ -2,7 +2,6 @@ package com.vatbox.vatboxservice.service.impl;
 
 import com.vatbox.vatboxservice.domain.dto.report.CustomerTotalReport;
 import com.vatbox.vatboxservice.domain.model.Customer;
-import com.vatbox.vatboxservice.domain.model.Invoice;
 import com.vatbox.vatboxservice.service.CustomerService;
 import com.vatbox.vatboxservice.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +17,25 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     @Transactional
-    public CustomerTotalReport generateCustomerTotalReport(Long customerId) {
+    public CustomerTotalReport generateCustomerTotalReport(Long customerId, Long from, Long to) {
         Customer customer = customerService.findById(customerId);
-        double totalAmount = 0.0;
-        double totalVat = 0.0;
-        for (Invoice invoice : customer.getInvoices()) {
-            totalAmount += invoice.getAmount();
-            totalVat += invoice.getVat();
-        }
+
+        final double[] totalAmount = {0.0};
+        final double[] totalVat = {0.0};
+
+        customer.getInvoices().stream()
+                .filter(invoice -> null == from || invoice.getDate().getTime() >= from)
+                .filter(invoice -> null == to || invoice.getDate().getTime() <= to)
+                .forEach(invoice -> {
+                    totalAmount[0] += invoice.getAmount();
+                    totalVat[0] += invoice.getVat();
+                });
+
         return CustomerTotalReport.builder()
                 .customerId(customerId)
                 .customerName(customer.getName())
-                .totalAmount(totalAmount)
-                .totalVat(totalVat)
+                .totalAmount(totalAmount[0])
+                .totalVat(totalVat[0])
                 .build();
     }
 
